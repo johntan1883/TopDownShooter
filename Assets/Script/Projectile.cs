@@ -4,37 +4,46 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float Damge = 1f;
     public float Speed = 100f; //Bullet Speed
-    public float PushForce = 50f; //Pushing Enemy
-    public float LifeTime = 1f;
+    public Cooldown NewLifeTime;
     public LayerMask TargetLayerMask;
+    
 
     private Rigidbody2D _rigidbody;
-    private float _timer = 0f;
+    private DamageOnTouch _damageOnTouch;
+    //private float _timer = 0f;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        if (_rigidbody == null)
-            return;
-
         _rigidbody.AddRelativeForce(new Vector2(0f, Speed));
+
+        _damageOnTouch = GetComponent<DamageOnTouch>();
+
+        //subscribing
+        if (_damageOnTouch != null)
+            _damageOnTouch.OnHit += Die;
+
+        
+        NewLifeTime.StartCooldown();
     }
     
     private void Update()
     {
-        if (_timer < LifeTime)
-        {
-            _timer += Time.deltaTime;
+        if (NewLifeTime.CurrentProgress != Cooldown.Progress.Finished) //To check the current status
             return;
-        }
 
         Die();
+        
     }
 
     void Die() 
     {
+        //unsubscribing
+        if (_damageOnTouch !=null)
+            _damageOnTouch.OnHit -= Die;
+
+        NewLifeTime.StopCooldown();
         Destroy(gameObject);
     }
 }

@@ -295,8 +295,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1453185301}
     m_Modifications:
     - target: {fileID: 948013230756944635, guid: 5b61402719c2f6a45ab27b7f77aa0f12, type: 3}
+      propertyPath: _fireMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 948013230756944635, guid: 5b61402719c2f6a45ab27b7f77aa0f12, type: 3}
       propertyPath: Porjectile_Interval
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 948013230756944635, guid: 5b61402719c2f6a45ab27b7f77aa0f12, type: 3}
+      propertyPath: AutoFireShootInterval.Duration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1139160196642174369, guid: 5b61402719c2f6a45ab27b7f77aa0f12, type: 3}
       propertyPath: m_Name
@@ -365,11 +373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6728096042137027834, guid: c9d72feadb8f9ef4ca3b02170b29b979, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.96
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 6728096042137027834, guid: c9d72feadb8f9ef4ca3b02170b29b979, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.77
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 6728096042137027834, guid: c9d72feadb8f9ef4ca3b02170b29b979, type: 3}
       propertyPath: m_LocalPosition.z
