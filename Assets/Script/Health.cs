@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
             Die();
         }
 
-        Invulnerable.StopCooldown();
+        Invulnerable.StartCooldown();
         _canDamage = false;
 
         OnHit?.Invoke(source);

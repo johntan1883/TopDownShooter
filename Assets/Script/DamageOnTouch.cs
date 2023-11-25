@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class DamageOnTouch : MonoBehaviour
 
     public float Damage = 1f;
     public float PushForce = 10f;
+
     public LayerMask TargetLayerMask;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,10 +20,20 @@ public class DamageOnTouch : MonoBehaviour
         if (!((TargetLayerMask.value & (1 << collision.gameObject.layer)) > 0))
             return;
 
-        Health targetHealth = collision.GetComponent<Health>();
+        Debug.Log("Hit target");
+        Health targetHealth = collision.gameObject.GetComponent<Health>();
+
+        Debug.Log(targetHealth);
 
         if (targetHealth == null)
             return;
+
+        Rigidbody2D targetRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
+
+        if(targetRigidbody != null) 
+        {
+            targetRigidbody.AddForce((collision.transform.position - transform.position).normalized * PushForce);
+        }
 
         TryDamage(targetHealth);
     }

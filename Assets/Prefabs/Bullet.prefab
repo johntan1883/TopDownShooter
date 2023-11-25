@@ -120,15 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26685d80192fd847b94bbf0bab981a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
   Speed: 2000
-  PushForce: 50
   NewLifeTime:
     CurrentProgress: 0
     Duration: 1
-  TargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &-8507074099489998466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d10ce4d6eedee498543d2b5466c64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  Damage: 5
+  PushForce: 10
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 64
