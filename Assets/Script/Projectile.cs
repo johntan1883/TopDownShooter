@@ -20,9 +20,11 @@ public class Projectile : MonoBehaviour
 
         //subscribing
         if (_damageOnTouch != null)
+        {
             _damageOnTouch.OnHit += Die;
+            Debug.Log("Subscribed Die method to OnHit event.");
+        }
 
-        
         NewLifeTime.StartCooldown();
         
     }

@@ -41,6 +41,9 @@ public class PlayerMovement : Movement
         Movement.x = Input.GetAxisRaw("Horizontal");
         Movement.y = Input.GetAxisRaw("Vertical");
 
+        //Prevent the double speed when moving diagonally
+        Movement = Vector2.ClampMagnitude(Movement, 1);
+
         Animator.SetFloat("Speed", Movement.sqrMagnitude);
     }
     private void FixedUpdate()

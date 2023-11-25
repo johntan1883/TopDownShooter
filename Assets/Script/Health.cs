@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
     private bool _canDamage = true;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         ResetInvulnerable();
     }
@@ -40,7 +40,10 @@ public class Health : MonoBehaviour
     public void Damage(float damage, GameObject source) 
     {
         if (!_canDamage)
+        {
+            Debug.Log("Cannot damage.");
             return;
+        }
 
         _currentHealth -= damage;
 
@@ -53,6 +56,7 @@ public class Health : MonoBehaviour
         Invulnerable.StartCooldown();
         _canDamage = false;
 
+        Debug.Log("Damage taken " + damage + "from " + source.name);
         OnHit?.Invoke(source);
     }
 

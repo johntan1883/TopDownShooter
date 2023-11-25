@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d10ce4d6eedee498543d2b5466c64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 2
   PushForce: 10
   TargetLayerMask:
     serializedVersion: 2
