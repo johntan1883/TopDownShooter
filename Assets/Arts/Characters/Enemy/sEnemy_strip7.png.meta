@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 354d449a4797ffd468a26888da169888
+guid: b34ea266a2702ab4ab3071e5fd966685
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sPlayerIdle_strip4_0
+      name: sEnemy_strip7_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80fb0f8fa2818a24b983958de4e5ace5
-      internalID: 1749609987
+      spriteID: 01aeded22f8cf604a8aab0bf49952515
+      internalID: -1728374812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sPlayerIdle_strip4_1
+      name: sEnemy_strip7_1
       rect:
         serializedVersion: 2
         x: 40
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0ee774261fd33948b55414ecb86e107
-      internalID: 630993513
+      spriteID: 1843e8f75c61f9846951f9db09da6a57
+      internalID: 1227969078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sPlayerIdle_strip4_2
+      name: sEnemy_strip7_2
       rect:
         serializedVersion: 2
         x: 80
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39527d2ebcb02504b9c68d1bc1cfcf1f
-      internalID: 1911552567
+      spriteID: 15035c6813fff8c46810220680f7b1b9
+      internalID: 1855796730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sPlayerIdle_strip4_3
+      name: sEnemy_strip7_3
       rect:
         serializedVersion: 2
         x: 120
@@ -200,8 +200,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66f2baced34f2c94ab7a9b8d56d6c7a9
-      internalID: -868565108
+      spriteID: be3cc814b44223246ae6e8045225c2e2
+      internalID: 600489711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_strip7_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb96489065c762f4aa686a20c1682486
+      internalID: 1146231620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_strip7_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09529a77d589c7e4c833ff6b82569c3d
+      internalID: 762238921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sEnemy_strip7_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b28e9789e0879c4fae0083d35b99f5a
+      internalID: -278877903
       vertices: []
       indices: 
       edges: []
@@ -217,10 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sPlayerIdle_strip4_0: 1749609987
-      sPlayerIdle_strip4_1: 630993513
-      sPlayerIdle_strip4_2: 1911552567
-      sPlayerIdle_strip4_3: -868565108
+      sEnemy_strip7_0: -1728374812
+      sEnemy_strip7_1: 1227969078
+      sEnemy_strip7_2: 1855796730
+      sEnemy_strip7_3: 600489711
+      sEnemy_strip7_4: 1146231620
+      sEnemy_strip7_5: 762238921
+      sEnemy_strip7_6: -278877903
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,6 +12,10 @@ public class Health : MonoBehaviour
 
     public float MaxHealth = 10f;
     public Cooldown Invulnerable;
+
+    //Animation for dead 
+    public Animator Animator;
+
     public float CurrentHealth 
     {
         get { return _currentHealth; }
@@ -20,7 +24,6 @@ public class Health : MonoBehaviour
     private float _currentHealth = 10f;
     private bool _canDamage = true;
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         ResetInvulnerable();
@@ -50,7 +53,7 @@ public class Health : MonoBehaviour
         if(_currentHealth <= 0f) 
         { 
             _currentHealth = 0f;
-            Die();
+            SetDie();
         }
 
         Invulnerable.StartCooldown();
@@ -60,8 +63,15 @@ public class Health : MonoBehaviour
         OnHit?.Invoke(source);
     }
 
-    public void Die() 
-    { 
+    public void SetDie() 
+    {
+        Debug.Log("Set bool to dead");
+        Animator.SetBool("IsDead", true);
+    }
+
+    public void DestroyObject()
+    {
+        Debug.Log("Destroying object after animation.");
         Destroy(this.gameObject);
     }
 }
