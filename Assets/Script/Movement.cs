@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
 
     protected Rigidbody2D _rigidBody;
     protected Collider2D _collider2D;
+    protected Vector2 _targetVelocity = Vector2.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +28,13 @@ public class Movement : MonoBehaviour
     {
         HandleInput();
         HandleMovement();
+        HandleRotation();
     }
 
+    protected virtual void HandleRotation() 
+    {
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, _targetVelocity);
+    }
     protected virtual void HandleInput()
     {
 
@@ -45,6 +52,8 @@ public class Movement : MonoBehaviour
             ref m_Velocity, m_MovementSmothing);
 
         transform.rotation = Quaternion.LookRotation(Vector3.forward,targetVelocity);
+
+        _targetVelocity = targetVelocity;
     }
 
 }

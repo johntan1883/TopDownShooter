@@ -138,6 +138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 2
   PushForce: 10
+  DamagableFeedback:
+  - {fileID: 1060526600053266072, guid: c2187b9501f464743ade2e8063d68342, type: 3}
+  AnythingFeedback:
+  - {fileID: 4587103234464151134, guid: 092c0910e9b88f24892eb5b6188dae67, type: 3}
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 64
