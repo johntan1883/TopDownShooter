@@ -33,10 +33,25 @@ public class WeaponHnadler : MonoBehaviour
         {
             CurrentWeapon.Shoot();
         }
+        else 
+        { 
+            CurrentWeapon.StopShoot();
+        }
     }
 
-    public void EquipWeapon(Weapon weapon)
+    public void EquipWeapon(GameObject equipWeapon)
     {
+        if(equipWeapon == null)
+            return;
+
+        if(CurrentWeapon != null) 
+        { 
+            Destroy(CurrentWeapon.gameObject);
+        }
+
+        GameObject weaponGO = GameObject.Instantiate(equipWeapon,GunPosition);
+        Weapon weapon = weaponGO.GetComponent<Weapon>();
+
         if (weapon == null)
             return;
 

@@ -10,21 +10,8 @@ public class EnemyMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
-    //protected override void HandleInput()
-    //{
-    //    if (Target == null) 
-    //    {
-    //        Target = GameObject.FindWithTag("Player").transform;
-    //    }
 
-    //    if(Target == null) 
-    //    {
-    //        return;
-    //    }
-
-    //    _inputDirection = (Target.position - transform.position).normalized;
-    //}
-
+    bool isDead = false;
     private void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
@@ -42,6 +29,12 @@ public class EnemyMovement : MonoBehaviour
     }
     void MoveCharacter(Vector2 direction) 
     { 
+        if(isDead) return;
         rb.MovePosition((Vector2)transform.position + (direction * MoveSpeed * Time.deltaTime));
+    }
+
+    public void StopMoving() 
+    {
+        isDead = true;
     }
 }

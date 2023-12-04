@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5941784, y: -0.671474, z: 0}
-  m_LocalScale: {x: 2.0165, y: 2.0165, z: 2.0165}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5671146160898359710}
@@ -46,14 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f863895591e50874280a236e0921e270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cycleFireModeKey: 98
   Projectile: {fileID: 2413460981571811817, guid: f2d2f7c4135181d408325d9aa9e276d9, type: 3}
   SpawnPos: {fileID: 8091396170230890882}
-  _fireMode: 0
   Porjectile_Interval: 100
   AutoFireShootInterval:
     CurrentProgress: 0
     Duration: 1
+  FireMode: 0
+  Spread: 0
+  BurstFireAmount: 3
+  BurstFireInterval: 0.1
+  Feedbacks: []
 --- !u!1 &5478183147303041877
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +115,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -0.111, z: 0}
-  m_LocalScale: {x: 1.6276, y: 1.6276, z: 1.6276}
+  m_LocalScale: {x: 0.47, y: 0.47, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1174650300270735393}
