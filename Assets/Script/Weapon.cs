@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,9 +8,9 @@ using UnityEngine;
 public enum Firemode {Single, Burst, Auto}
 public class Weapon : MonoBehaviour
 {
-    
-    public enum FireModes 
-    { 
+
+    public enum FireModes
+    {
         Auto,       // = 0
         SingleFire, // = 1
         BurstFire   // = 2
@@ -39,7 +40,23 @@ public class Weapon : MonoBehaviour
 
     [Header("Sound Effects")]
     public GameObject[] Feedbacks;
+    public GameObject[] ReloadFeedbacks;
 
+    [Header("Reload")]
+    public int ProjectileCount = 1;
+    public Cooldown ReloadCooldown;
+    public int MaxBulletCount = 12;
+    public int CurrentBulletCount
+    {
+        get { return currentBulletCount; }
+    }
+
+    protected int currentBulletCount;
+
+    private void Start()
+    {
+        currentBulletCount = MaxBulletCount;
+    }
     void Update()
     {
         //Swithing fireMode
@@ -49,25 +66,46 @@ public class Weapon : MonoBehaviour
             CycleFireMode();
         }
 
+        UpdateReloadCooldown();
+        UpdateShootCooldown();
+    }
+
+    private void UpdateReloadCooldown()
+    {
+        if (ReloadCooldown.CurrentProgress != Cooldown.Progress.Finished)
+            return;
+
+        if (ReloadCooldown.CurrentProgress == Cooldown.Progress.Finished)
+        {
+            currentBulletCount = MaxBulletCount;
+        }
+
+        ReloadCooldown.CurrentProgress = Cooldown.Progress.Ready;
+    }
+    private void UpdateShootCooldown()
+    {
         if (AutoFireShootInterval.CurrentProgress != Cooldown.Progress.Finished)
             return;
 
         AutoFireShootInterval.CurrentProgress = Cooldown.Progress.Ready;
     }
 
-    public void Shoot() 
-    { 
-        if(Projectile == null)
+    public void Shoot()
+    {
+        if (Projectile == null)
         {
             Debug.LogWarning("Missing Projectile prefab");
             return;
         }
 
-        if (SpawnPos == null) 
+        if (SpawnPos == null)
         {
             Debug.LogWarning("Missing SpawnPosition transornm");
             return;
         }
+
+        if (ReloadCooldown.IsOnCooldown || ReloadCooldown.CurrentProgress != Cooldown.Progress.Ready)
+            return;
 
         switch (FireMode) 
         {
@@ -96,17 +134,28 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    void ShootProjectile() 
+    {
+        float randomRot = Random.Range(-Spread, Spread);
+
+        //Spawn Projectile
+        GameObject bullet = GameObject.Instantiate(Projectile, SpawnPos.position, SpawnPos.rotation * Quaternion.Euler(0,0,randomRot));
+        SpawnFeedbacks();
+    }
     void AutoFireShoot() 
     {
+        if (!_canShoot)
+            return;
+
         if (AutoFireShootInterval.CurrentProgress != Cooldown.Progress.Ready)
             return;
 
-        //Spawn Projectile
-        GameObject bullet = GameObject.Instantiate(Projectile, SpawnPos.position, SpawnPos.rotation);
+        ShootProjectile();
 
+        currentBulletCount--;
         AutoFireShootInterval.StartCooldown();
 
-        SpawnFeedbacks();
+        StartReloading();
     }
 
     void SingleFireShoot() 
@@ -130,6 +179,7 @@ public class Weapon : MonoBehaviour
             return;
 
         StartCoroutine(BurstFireCo(1f));
+        StartReloading();
     }
 
     IEnumerator BurstFireCo(float time = 3f) 
@@ -143,9 +193,8 @@ public class Weapon : MonoBehaviour
         {
             float randomRot = Random.Range(-Spread, Spread);
 
-            //Spawn Projectile
-            GameObject bullet = GameObject.Instantiate(Projectile, SpawnPos.position, SpawnPos.rotation);
-            SpawnFeedbacks();
+            ShootProjectile();
+            currentBulletCount--;
             _lastShootRequestAt = Time.time;
 
             remaingShots--;
@@ -154,6 +203,8 @@ public class Weapon : MonoBehaviour
 
         _burstFiring = false;
         AutoFireShootInterval.StartCooldown();
+
+        
     }
 
     IEnumerator WaitFor(float seconds) 
@@ -177,5 +228,18 @@ public class Weapon : MonoBehaviour
             FireMode += 1;
         else
             FireMode = 0;
+    }
+
+    void StartReloading() 
+    {
+        if (currentBulletCount <= 0 && !ReloadCooldown.IsOnCooldown)
+        {
+            foreach (var feedback in ReloadFeedbacks)
+            {
+                GameObject.Instantiate(feedback, transform.position, transform.rotation);
+            }
+
+            ReloadCooldown.StartCooldown();
+        }
     }
 }

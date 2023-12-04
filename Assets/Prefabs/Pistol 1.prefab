@@ -132,16 +132,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 2413460981571811817, guid: f2d2f7c4135181d408325d9aa9e276d9, type: 3}
   SpawnPos: {fileID: 3655454892714603228}
-  Porjectile_Interval: 0.1
+  Porjectile_Interval: 0.8
   AutoFireShootInterval:
     CurrentProgress: 0
-    Duration: 0.2
-  FireMode: 2
-  Spread: 0
+    Duration: 0.08
+  FireMode: 0
+  Spread: 1
   BurstFireAmount: 3
   BurstFireInterval: 0.1
   Feedbacks:
   - {fileID: 8326451599439444516, guid: de4cdb4563da9b64a911140f84e30052, type: 3}
+  ReloadFeedbacks: []
+  ProjectileCount: 1
+  ReloadCooldown:
+    CurrentProgress: 0
+    Duration: 1
+  MaxBulletCount: 12
 --- !u!82 &2662312962113939174
 AudioSource:
   m_ObjectHideFlags: 0

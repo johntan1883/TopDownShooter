@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d10ce4d6eedee498543d2b5466c64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 2
+  Damage: 5
   PushForce: 10
   DamagableFeedback:
   - {fileID: 1060526600053266072, guid: c2187b9501f464743ade2e8063d68342, type: 3}
