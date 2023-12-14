@@ -18,6 +18,13 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (Player == null)
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+
+            Player = player.transform;
+        }
+
         Vector3 direction = Player.position - transform.position;
         direction.Normalize();
         movement = direction;
@@ -27,13 +34,13 @@ public class EnemyMovement : MonoBehaviour
     {
         MoveCharacter(movement);
     }
-    void MoveCharacter(Vector2 direction) 
-    { 
-        if(isDead) return;
+    void MoveCharacter(Vector2 direction)
+    {
+        if (isDead) return;
         rb.MovePosition((Vector2)transform.position + (direction * MoveSpeed * Time.deltaTime));
     }
 
-    public void StopMoving() 
+    public void StopMoving()
     {
         isDead = true;
     }
