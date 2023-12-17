@@ -10,11 +10,12 @@ public class EnemyMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
-
+    
     bool isDead = false;
+    bool facingRight = true;
     private void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
@@ -36,12 +37,34 @@ public class EnemyMovement : MonoBehaviour
     }
     void MoveCharacter(Vector2 direction)
     {
-        if (isDead) return;
+        if (isDead) 
+            return;
+
         rb.MovePosition((Vector2)transform.position + (direction * MoveSpeed * Time.deltaTime));
+
+        if (direction.x > 0 && !facingRight)
+        {
+            Flip();
+        }
+        
+        else if (direction.x < 0 && facingRight)
+        {
+            Flip();
+        }
     }
 
     public void StopMoving()
     {
         isDead = true;
+    }
+
+    //This function used to flip the sprite of the object
+    void Flip()
+    {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+
+        facingRight = !facingRight;
     }
 }
