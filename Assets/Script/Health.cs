@@ -66,7 +66,7 @@ public class Health : MonoBehaviour
     public void SetDie() 
     {
         Debug.Log("Set bool to dead");
-        Animator.SetBool("IsDead", true);
+        Animator.SetTrigger("Death");
     }
 
     public void DestroyObject()

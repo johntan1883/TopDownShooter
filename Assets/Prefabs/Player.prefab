@@ -75,10 +75,11 @@ GameObject:
   - component: {fileID: 3361014709532508630}
   - component: {fileID: 8623925347016534763}
   - component: {fileID: 4906813202958587492}
+  - component: {fileID: 2594475075401836206}
   - component: {fileID: 6129496734277858769}
   - component: {fileID: 1214645023006387236}
   - component: {fileID: 8611567233216744834}
-  - component: {fileID: 2594475075401836206}
+  - component: {fileID: 8302505369475199020}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -216,6 +217,27 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0018621617, y: 0.010242264}
   m_Size: {x: 0.15791091, y: 0.19701762}
   m_Direction: 0
+--- !u!95 &2594475075401836206
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7526751945839541417}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c446dd18caace824b8bbe0aa57fee24e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6129496734277858769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,24 +282,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab6fc23a1c744540831a43063d0125c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &2594475075401836206
-Animator:
-  serializedVersion: 5
+--- !u!114 &8302505369475199020
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7526751945839541417}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c446dd18caace824b8bbe0aa57fee24e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f082023c2e0a94eb4c3ffa7338d2db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 10
+  Invulnerable:
+    CurrentProgress: 0
+    Duration: 1
+  Animator: {fileID: 2594475075401836206}

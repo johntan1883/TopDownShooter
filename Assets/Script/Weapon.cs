@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
     public float BurstFireInterval = 0.1f;
 
     private bool _canShoot = true;
-    private bool _singleFireReset = true;
+    private bool _fireReset = true;
 
     private bool _burstFiring = false;
     private float _lastShootRequestAt;
@@ -116,6 +116,7 @@ public class Weapon : MonoBehaviour
                 }
             case FireModes.SingleFire:
                 {
+                    SingleFireShoot();
                     break;
                 }
             case FireModes.BurstFire: 
@@ -159,9 +160,18 @@ public class Weapon : MonoBehaviour
     }
 
     void SingleFireShoot() 
-    { 
+    {
+        if (!_canShoot)
+            return;
 
-        
+        if (!_fireReset)
+            return;
+
+        ShootProjectile();
+
+        currentBulletCount--;
+
+        _fireReset = false;
     }
 
     void BurstFireShoot() 
@@ -172,7 +182,7 @@ public class Weapon : MonoBehaviour
         if (_burstFiring)
             return;
 
-        if (!_singleFireReset)
+        if (!_fireReset)
             return;
 
         if (AutoFireShootInterval.CurrentProgress != Cooldown.Progress.Ready)
@@ -185,7 +195,7 @@ public class Weapon : MonoBehaviour
     IEnumerator BurstFireCo(float time = 3f) 
     {
         _burstFiring = true;
-        _singleFireReset = false;
+        _fireReset = false;
 
         int remaingShots = BurstFireAmount;
 
@@ -216,8 +226,8 @@ public class Weapon : MonoBehaviour
     }
 
     public void StopShoot() 
-    { 
-        _singleFireReset = true;
+    {
+        _fireReset = true;
     }
 
     private void CycleFireMode()
