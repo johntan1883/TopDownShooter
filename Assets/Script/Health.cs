@@ -21,6 +21,9 @@ public class Health : MonoBehaviour
         get { return _currentHealth; }
     }
 
+    public delegate void DeathEvent();
+    public DeathEvent OnDeath;
+
     private float _currentHealth = 10f;
     private bool _canDamage = true;
 
@@ -72,6 +75,7 @@ public class Health : MonoBehaviour
     public void DestroyObject()
     {
         Debug.Log("Destroying object after animation.");
+        OnDeath?.Invoke();
         Destroy(this.gameObject);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public GameObject Weapon;
+    //public GameObject Weapon;
 
     public GameObject[] PickupFeedbacks;
 
@@ -17,10 +17,12 @@ public class Pickup : MonoBehaviour
 
         WeaponHnadler weaponHandler = collision.GetComponent<WeaponHnadler>();
 
-        if (weaponHandler == null)
-            return;
+        //if (weaponHandler == null)
+        //    return;
 
-        weaponHandler.EquipWeapon(Weapon);
+        //weaponHandler.EquipWeapon(Weapon);
+
+        PickedUp();
 
         foreach (var feedback in PickupFeedbacks) 
         { 
@@ -28,5 +30,10 @@ public class Pickup : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    protected virtual void PickedUp(Collider2D col)
+    {
+
     }
 }
