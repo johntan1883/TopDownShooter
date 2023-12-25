@@ -16,9 +16,14 @@ public class DamageOnTouch : MonoBehaviour
     public GameObject[] AnythingFeedback;
 
     public LayerMask TargetLayerMask;
+    public LayerMask IgnoreLayerMask;
 
+    public Transform projectile;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (((IgnoreLayerMask.value & (1 << collision.gameObject.layer)) > 0))
+            return;
+
         //if hit something that doesn't belong in our TargetLayerMask
         if ((TargetLayerMask.value & (1 << collision.gameObject.layer)) > 0)
         {

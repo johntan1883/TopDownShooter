@@ -184,6 +184,10 @@ MonoBehaviour:
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  IgnoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  projectile: {fileID: 0}
 --- !u!70 &5540670287616177522
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

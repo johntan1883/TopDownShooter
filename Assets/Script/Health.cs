@@ -10,6 +10,9 @@ public class Health : MonoBehaviour
     public delegate void ResetEvent();
     public ResetEvent OnHitReset;
 
+    public delegate void HealEvent(GameObject source);
+    public HealEvent OnHeal;
+
     public float MaxHealth = 10f;
     public Cooldown Invulnerable;
 
@@ -68,6 +71,11 @@ public class Health : MonoBehaviour
 
     public void SetDie() 
     {
+        Collider2D collider = GetComponent<Collider2D>();
+
+        if (collider != null)
+            collider.enabled = false;
+
         Debug.Log("Set bool to dead");
         Animator.SetTrigger("Death");
     }
@@ -77,5 +85,14 @@ public class Health : MonoBehaviour
         Debug.Log("Destroying object after animation.");
         OnDeath?.Invoke();
         Destroy(this.gameObject);
+    }
+
+    public void Heal (float healAmount)
+    {
+        _currentHealth += healAmount;
+
+        _currentHealth = Mathf.Clamp( _currentHealth, 0f, MaxHealth );
+
+        OnHeal?.Invoke(gameObject);
     }
 }

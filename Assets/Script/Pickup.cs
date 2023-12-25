@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public abstract class Pickup : MonoBehaviour
 {
-    //public GameObject Weapon;
-
     public GameObject[] PickupFeedbacks;
 
     public LayerMask TargetLayerMask;
@@ -17,12 +15,7 @@ public class Pickup : MonoBehaviour
 
         WeaponHnadler weaponHandler = collision.GetComponent<WeaponHnadler>();
 
-        //if (weaponHandler == null)
-        //    return;
-
-        //weaponHandler.EquipWeapon(Weapon);
-
-        PickedUp();
+        PickedUp(collision);
 
         foreach (var feedback in PickupFeedbacks) 
         { 
