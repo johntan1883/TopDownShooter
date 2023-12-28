@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7917033614815189414}
   m_Layer: 6
   m_Name: DamageOnTouch
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,13 +80,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d10ce4d6eedee498543d2b5466c64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  Damage: 2
   PushForce: 1000
   DamagableFeedback: []
   AnythingFeedback: []
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  IgnoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  projectile: {fileID: 0}
+--- !u!1 &4128967142314272540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8208906157633851016}
+  - component: {fileID: 6582058834915010972}
+  m_Layer: 6
+  m_Name: Blocking
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8208906157633851016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128967142314272540}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6728096042137027834}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &6582058834915010972
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128967142314272540}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0208719, y: 0}
+  m_Size: {x: 0.9174429, y: 1}
+  m_Direction: 0
 --- !u!1 &6674185863822368584
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,9 +174,10 @@ GameObject:
   - component: {fileID: 7782357250338693120}
   - component: {fileID: 3883366195765938805}
   - component: {fileID: 2833623504287970954}
+  - component: {fileID: -6811509833981069764}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,6 +196,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5299694133763154961}
+  - {fileID: 8208906157633851016}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1105879128611710960
@@ -138,7 +211,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -201,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  MoveSpeed: 1
+  MoveSpeed: 2
 --- !u!114 &8128339048766145229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,9 +351,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1119805297
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1728374812, guid: b34ea266a2702ab4ab3071e5fd966685, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -304,6 +377,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71db5112a89987e4f8c82562334c397b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DropChance: 100
+  DropChance: 50
   RandomLoots:
   - {fileID: 3262118086665969399, guid: a02b6586357864e4e90a21d8da9151a4, type: 3}
+--- !u!114 &-6811509833981069764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6674185863822368584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969b013d669cf874f89677a79e7f12ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 3883366195765938805}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponPickup : Pickup
 {
     public GameObject Weapon;
+    public GameObject PickUpSound;
 
     protected override void PickedUp(Collider2D col)
     {
@@ -12,6 +13,12 @@ public class WeaponPickup : Pickup
 
         if (weaponHandler == null)
             return;
+
+        PickUpSound = GameObject.FindGameObjectWithTag("Pickup Weapon");
+        if (PickUpSound.GetComponent<AudioSource>() != null)
+        {
+            PickUpSound.GetComponent<AudioSource>().Play();
+        }
 
         weaponHandler.EquipWeapon(Weapon);
     }

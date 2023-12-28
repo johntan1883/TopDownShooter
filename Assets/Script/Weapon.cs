@@ -57,6 +57,7 @@ public class Weapon : MonoBehaviour
     {
         currentBulletCount = MaxBulletCount;
     }
+
     void Update()
     {
         //Swithing fireMode
@@ -247,6 +248,11 @@ public class Weapon : MonoBehaviour
             foreach (var feedback in ReloadFeedbacks)
             {
                 GameObject.Instantiate(feedback, transform.position, transform.rotation);
+            }
+
+            if (GetComponent<AudioSource>() != null)
+            {
+                GetComponent<AudioSource>().Play();
             }
 
             ReloadCooldown.StartCooldown();

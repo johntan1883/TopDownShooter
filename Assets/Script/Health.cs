@@ -18,6 +18,7 @@ public class Health : MonoBehaviour
 
     //Animation for dead 
     public Animator Animator;
+    public SpriteRenderer sprite;
 
     public float CurrentHealth 
     {
@@ -29,7 +30,10 @@ public class Health : MonoBehaviour
 
     private float _currentHealth = 10f;
     private bool _canDamage = true;
-
+    private void Start()
+    {
+        _currentHealth = MaxHealth;
+    }
     void FixedUpdate()
     {
         ResetInvulnerable();
@@ -56,7 +60,16 @@ public class Health : MonoBehaviour
 
         _currentHealth -= damage;
 
-        if(_currentHealth <= 0f) 
+        if (sprite != null)
+        {
+            FlashingRed();
+            if (GetComponent<AudioSource>() != null)
+            {
+                GetComponent<AudioSource>().Play();
+            }
+        }
+
+        if (_currentHealth <= 0f) 
         { 
             _currentHealth = 0f;
             SetDie();
@@ -94,5 +107,17 @@ public class Health : MonoBehaviour
         _currentHealth = Mathf.Clamp( _currentHealth, 0f, MaxHealth );
 
         OnHeal?.Invoke(gameObject);
+    }
+
+    private void FlashingRed()
+    {
+        StartCoroutine(DoFlashingRed());
+    }
+
+    private IEnumerator DoFlashingRed()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
     }
 }

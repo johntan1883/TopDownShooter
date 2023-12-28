@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Enemy
+  - Weapon
+  - UI
+  - Pickup Weapon
   layers:
   - Default
   - TransparentFX
@@ -41,6 +46,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: Front
     uniqueID: 3175161999
-    locked: 0
+    locked: 1
